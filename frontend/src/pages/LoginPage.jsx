@@ -4,6 +4,8 @@ import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from '../context/AuthContext';
 import { Navigate, useNavigate } from 'react-router-dom';
 
+
+
 const LoginPage = () => {
   const { login, signup, loginWithGoogle } = useContext(AuthContext);
   const [isLogin, setIsLogin] = useState(true); // toggle between Login / Sign Up
@@ -49,7 +51,7 @@ const LoginPage = () => {
 
   };
 
-  const handleGoogleLogin = async () => {
+  /*const handleGoogleLogin = async () => {
     try {
       await loginWithGoogle();
 
@@ -59,7 +61,18 @@ const LoginPage = () => {
       console.error(err);
       setError('Google login failed.');
     }
-  };
+  };*/
+
+  const handleGoogleLogin = async () => {
+  try {
+    // Directly redirect to deployed backend for Google OAuth
+    window.location.href = 'https://deal-nova-git-main-banashankaris-projects.vercel.app/';
+  } catch (err) {
+    console.error(err);
+    setError('Google login failed.');
+  }
+};
+
 
   return (
     <div className="w-full min-h-screen bg-gradient-to-br from-[#1a2a47] to-[#0f172a] flex items-center justify-center px-4">
